@@ -1,6 +1,6 @@
 Type=OleDll
-Class=MiniblinkAPI; Cls\MiniblinkAPI.cls
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
+Class=MiniblinkAPI; Cls\MiniblinkAPI.cls
 Class=cUniversalDLLCalls; Cls\cUniversalDLLCalls.cls
 Class=fastcallCallback; Cls\fastcallCallback.cls
 Class=MiniblinkTypeEnum; Cls\MiniblinkTypeEnum.cls
@@ -9,15 +9,15 @@ Module=wke; Bas\wke.bas
 Module=MyModule; Bas\MyModule.bas
 Startup="(None)"
 HelpFile=""
-Title="MiniblinkSDK"
-ExeName32="MiniblinkSDK.dll"
+Title="MiniblinkSDK 2.0.0"
+ExeName32="MiniblinkSDK_200.dll"
 Path32="Build"
 Command32=""
-Name="MiniblinkSDK"
+Name="MiniblinkSDK_200"
 HelpContextID="0"
-CompatibleMode="1"
+CompatibleMode="0"
 CompatibleEXE32="Build\MiniblinkSDK.dll"
-MajorVer=1
+MajorVer=2
 MinorVer=0
 RevisionVer=0
 AutoIncrementVer=0
@@ -41,6 +41,7 @@ Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
 ThreadingModel=1
+DebugStartupOption=0
 
 [MS Transaction Server]
 AutoRefresh=1
