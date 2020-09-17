@@ -1,7 +1,8 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
-Reference=*\G{0645D910-4374-40AB-AD81-CD1DA5F5D440}#1.0#0#..\..\..\..\..\..\..\WINDOWS\System32\MiniblinkSDK.dll#MiniblinkSDK
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{9E96C180-C440-4CE0-9020-F649644C33C0}#1.0#0#..\..\..\..\..\..\..\..\Windows\SysWow64\MiniblinkSDK_201.dll#MiniblinkSDK_201
 Form=Frm\Form1.frm
+Form=Frm\Form2.frm
 IconForm="Form1"
 Startup="Form1"
 ExeName32="Demo1.exe"

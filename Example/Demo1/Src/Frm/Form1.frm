@@ -3,7 +3,7 @@ Begin VB.Form Form1
    Caption         =   "Demo1"
    ClientHeight    =   5970
    ClientLeft      =   165
-   ClientTop       =   855
+   ClientTop       =   810
    ClientWidth     =   12585
    LinkTopic       =   "Form1"
    ScaleHeight     =   5970
@@ -45,13 +45,27 @@ Private Sub Form_Load()
     Set mb_callback = New MiniblinkCallBack
 End Sub
 
-Private Sub mb_callback_wkeCreateViewCallback(ByVal webView As Long, ByVal param As Long, ByVal navigationType As MiniblinkSDK.wkeNavigationType, ByVal url As String, windowFeatures As MiniblinkSDK.wkeWindowFeatures)
-    Debug.Print "触发了wkeCreateViewCallback"
-    mb_callback.Return_wkeCreateViewCallback = webView      '使用原webview加载
+Private Sub mb_callback_wkeCreateViewCallback(ByVal webView As Long, ByVal param As Long, ByVal navigationType As MiniblinkSDK_201.wkeNavigationType, ByVal url As String, windowFeatures As MiniblinkSDK_201.wkeWindowFeatures)
+    Debug.Print webView & " 触发了wkeCreateViewCallback"
+
+    'mb_callback.Return_wkeCreateViewCallback = webView      '使用原webview加载
+    
+    '创建新的窗口价加载
+    Dim tf As New Form2
+    tf.Show
+    
+    tf.mb = mb_api.wkeCreateWebWindow(2, tf.hWnd, 0, 0, tf.ScaleWidth, tf.ScaleHeight)
+    mb_api.wkeShowWindow tf.mb, True
+    
+    mb_api.wkeOnLoadUrlBegin tf.mb, mb_callback.wkeLoadUrlBeginCallback, 0                  'url加载事件绑定
+    mb_api.wkeOnCreateView tf.mb, mb_callback.wkeCreateViewCallback, 0                      '创建新窗口事件绑定
+    mb_api.wkeOnDownload tf.mb, mb_callback.wkeDownloadCallback, 0                          '下载事件绑定
+    
+    mb_callback.Return_wkeCreateViewCallback = tf.mb
 End Sub
 
 Private Sub mb_callback_wkeDownloadCallback(ByVal webView As Long, ByVal param As Long, ByVal url As String)
-    Debug.Print "触发了下载事件，下载地址：" & url
+    Debug.Print webView & " 触发了下载事件，下载地址：" & url
 End Sub
 
 Private Sub mb_callback_wkeJsNativeFunction(ByVal es As Long, ByVal param As Long)
@@ -62,7 +76,7 @@ Private Sub mb_callback_wkeJsNativeFunction(ByVal es As Long, ByVal param As Lon
 End Sub
 
 Private Sub mb_callback_wkeLoadUrlBeginCallback(ByVal webView As Long, ByVal param As Long, ByVal url As String, ByVal job As Long)
-    Debug.Print url
+    Debug.Print webView & " " & url
 End Sub
 
 Private Sub T1_Click()
